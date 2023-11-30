@@ -1,1 +1,4 @@
-<app-crud></app-crud>
+<div class="content-wrap d-flex flex-row">
+<app-form class="col-6" (formSubmited)="patchDataToChildComponent($event)"></app-form>
+<app-crud class="col-6" [studentList]="formData"></app-crud>
+</div>

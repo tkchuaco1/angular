@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-pj';
+  formData: any;
+  patchDataToChildComponent(data : any){
+    this.formData = data
+    console.log(this.formData)
+  }
 }
