@@ -1,0 +1,119 @@
+<div class="content-wrap d-flex flex-row">
+  <form
+    novalidate
+    (ngSubmit)="onSubmit()"
+    class="form-group border p-4 col-6 float-left"
+    [formGroup]="FormStudent"
+  >
+    <legend>Student Form</legend>
+    <div class="form-group">
+      <label for="name">Name</label><br />
+      <input
+        class="form-control"
+        type="text"
+        id="example-text-input"
+        formControlName="name"
+      /><br />
+      <div
+        class="col alert alert-danger"
+        role="alert"
+        *ngIf="
+          FormStudent.controls.name?.hasError('required') &&
+          FormStudent.controls.name?.touched
+        "
+      >
+        Name is required!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label><br />
+      <input
+        class="form-control"
+        type="number"
+        id="age"
+        formControlName="age"
+      />
+      <div
+        class="col alert alert-danger"
+        role="alert"
+        *ngIf="
+          FormStudent.controls.age?.hasError('required') &&
+          FormStudent.controls.age?.touched
+        "
+      >
+        Age is required!
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="dob">Date of birth</label><br />
+      <input class="form-control" type="date" id="dob" formControlName="dob" />
+      <div
+        class="col alert alert-danger"
+        role="alert"
+        *ngIf="
+          FormStudent.controls.dob?.hasError('required') &&
+          FormStudent.controls.dob?.touched
+        "
+      >
+        DOB is required!
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="sex">Sex</label><br />
+      <select type="text" id="sex" class="form-control" formControlName="sex">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div
+        class="col alert alert-danger"
+        role="alert"
+        *ngIf="
+          FormStudent.controls.sex?.hasError('required') &&
+          FormStudent.controls.sex?.touched
+        "
+      >
+        Sex is required!
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="tel">Phone Number</label><br />
+      <input class="form-control" type="text" id="tel" formControlName="tel" />
+      <div
+        class="col alert alert-danger"
+        role="alert"
+        *ngIf="
+          FormStudent.controls.tel.hasError('invalidPhoneNumber') &&
+          FormStudent.controls.tel?.touched
+        "
+      >
+        Please enter a valid phone number (e.g., 0000 000 000).
+      </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <table class="table table-striped-columns col-6 w-50">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date of birth</th>
+        <th>Sex</th>
+        <th>Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.dob }}</td>
+        <td>{{ student.sex }}</td>
+        <td>{{ student.tel }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
