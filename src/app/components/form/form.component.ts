@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'
+import { Component, OnInit, EventEmitter, Output, OnChanges } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { DataServiceService } from '../../../shared/data-service.service';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -8,8 +9,8 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'
 export class FormComponent implements OnInit {
 
   @Output() formSubmited = new EventEmitter<any>();
-  @Output() data = new EventEmitter<any>();
-  allData : Object[] = []
+  // @Output() data = new EventEmitter<any>();
+  // allData : Object[] = []
   FormStudent = new FormGroup({
     name: new FormControl('',Validators.required),
     age: new FormControl('',Validators.required),
@@ -17,19 +18,17 @@ export class FormComponent implements OnInit {
     tel: new FormControl('', [Validators.required, this.phoneNumberValidator]),
     sex: new FormControl('',Validators.required)
   });
-  constructor() {
+  constructor(private _DataService: DataServiceService) {
   }
 
   ngOnInit(): void {
+    // this._DataService.setFormData(this.FormStudent.value)
   }
 
   onSubmit() {
     if(this.FormStudent.valid){
-      // console.log(typeof(this.FormStudent.value))
-      let FormData = this.FormStudent.value
-      this.allData.push(FormData)
-      // FormData.push(this.FormStudent.value)
-      this.formSubmited.emit(this.allData)
+      this._DataService.setFormData(this.FormStudent.value)
+      // this.formSubmited.emit(this.FormStudent.value)
     }
     else {
       this.validateAllFormFields(this.FormStudent)

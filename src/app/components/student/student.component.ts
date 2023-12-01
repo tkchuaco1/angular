@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-
+import { DataServiceService } from '../../../shared/data-service.service';
 interface IStudent {
   name: string,
   age: string,
@@ -15,6 +14,13 @@ interface IStudent {
   styles: [' table, th, td {border: 1px solid black;}']
 })
 export class  StudentComponent implements OnInit {
-  @Input() studentList : IStudent[] = [];
-  ngOnInit(): void {}
+  studentList : IStudent[] = [];
+  constructor(private _DataService: DataServiceService) {
+  }
+
+  ngOnInit(): void {
+    this._DataService.fetchFormData().subscribe(data => {
+      this.studentList =  [...this.studentList||[],data]
+    })
+  }
 }

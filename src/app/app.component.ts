@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  formData: any;
-  patchDataToChildComponent(data : any){
-    this.formData = data
-    console.log(this.formData)
-  }
+  // formData: any;
+  // patchDataToChildComponent(data : any){
+  //   this.formData = [...this.formData||[],data]
+  //   // console.log(this.formData);
+  // }
 }
