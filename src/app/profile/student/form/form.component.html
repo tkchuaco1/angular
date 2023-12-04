@@ -1,0 +1,22 @@
+<form action="" [formGroup]="formStudent" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Tên</label>
+    <br>
+    <input type="text" class="form-control" id="name" formControlName="name" aria-describedby="name" placeholder="Tên">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="dob">Ngày sinh</label>
+    <br>
+    <input type="date" class="form-control" formControlName="dob" id="dob" placeholder="Ngày Sinh">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="tel">Số điện thoại</label>
+    <br>
+    <input type="tel" class="form-control" formControlName="phoneNumber" id="tel" placeholder="Số điện thoại">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

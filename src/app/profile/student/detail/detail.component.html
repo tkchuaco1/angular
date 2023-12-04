@@ -1,0 +1,24 @@
+<table class="table table-border">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Số thứ tự</th>
+      <th scope="col">Tên</th>
+      <th scope="col">Ngày Sinh</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of dataStudent">
+      <td>{{e.id}}</td>
+      <td>{{e.name}}</td>
+      <td>{{e.phoneNumber}}</td>
+      <td>{{e.dob}}</td>
+      <td colspan="2">
+        <button (click)="deleteItem(e.id)">delete</button>
+        <button (click)="editItem(e.id)">edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
